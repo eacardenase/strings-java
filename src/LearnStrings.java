@@ -1,33 +1,23 @@
 public class LearnStrings {
     public static void main(String[] args) {
-        String myText = "ABCDEFGABCDEFG";
+        String text = """
+                Smith,Fred,1/1/79,1111 ABC St.,Apple,CA
+                McGuire,Jerry,2/2/80,2222 DEF St.,Orange,NV
+                Flintstone,Fred,3/3/81,3333 GHI St.,Pear,MO
+                """;
 
-//        System.out.println(myText.indexOf("seven")); // -1
-//        System.out.println(myText.indexOf(65)); // 0 because of unicode
-//        System.out.println(myText.indexOf("A")); // 0
-//        System.out.println(myText.lastIndexOf("A")); // 7
-//        System.out.println(myText.indexOf("A", 2)); // 7
+        String[] people = text.split("\n");
 
-        String phoneNumber = "(763) 872-6633";
-        String areaCode = findString('(', ')', phoneNumber);
-        String exchange = findString(' ', '-', phoneNumber);
-        String lineNumber = findString('-', phoneNumber);
+        System.out.println(people.length); // property
+        System.out.println("people".length()); // method
 
-        System.out.println(areaCode);
-        System.out.println(exchange);
-        System.out.println(lineNumber);
-    }
+        String[] person = people[0].split(",");
 
-    public static String findString(char startChar, String text) {
-        int startIndex = text.indexOf(startChar) + 1;
+        System.out.println(people[0]);
 
-        return  text.substring(startIndex);
-    }
-
-    public static String findString(char startChar, char endChar, String text) {
-        int startIndex = text.indexOf(startChar) + 1;
-        int endIndex = text.indexOf(endChar);
-
-        return  text.substring(startIndex, endIndex);
+        System.out.println(person[0]);
+        System.out.println(person[1]);
+        System.out.println(person[2]);
+        System.out.println(person[3]);
     }
 }
