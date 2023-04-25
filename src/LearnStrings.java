@@ -1,16 +1,33 @@
 public class LearnStrings {
     public static void main(String[] args) {
-        String myText = "for score and seven years ago.";
-        String firstPart = myText.substring(0, 1).toUpperCase();
-        String secondPart = myText.substring(1);
+        String myText = "ABCDEFGABCDEFG";
 
-//        String myNewText = firstPart.concat(secondPart);
-        String myNewText = new StringBuilder(firstPart)
-                .append(secondPart)
-                .toString();
+//        System.out.println(myText.indexOf("seven")); // -1
+//        System.out.println(myText.indexOf(65)); // 0 because of unicode
+//        System.out.println(myText.indexOf("A")); // 0
+//        System.out.println(myText.lastIndexOf("A")); // 7
+//        System.out.println(myText.indexOf("A", 2)); // 7
 
-        System.out.println(myText);
-        System.out.println(myNewText);
+        String phoneNumber = "(763) 872-6633";
+        String areaCode = findString('(', ')', phoneNumber);
+        String exchange = findString(' ', '-', phoneNumber);
+        String lineNumber = findString('-', phoneNumber);
 
+        System.out.println(areaCode);
+        System.out.println(exchange);
+        System.out.println(lineNumber);
+    }
+
+    public static String findString(char startChar, String text) {
+        int startIndex = text.indexOf(startChar) + 1;
+
+        return  text.substring(startIndex);
+    }
+
+    public static String findString(char startChar, char endChar, String text) {
+        int startIndex = text.indexOf(startChar) + 1;
+        int endIndex = text.indexOf(endChar);
+
+        return  text.substring(startIndex, endIndex);
     }
 }
