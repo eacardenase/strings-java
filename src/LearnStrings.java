@@ -1,12 +1,10 @@
 public class LearnStrings {
     public static void main(String[] args) {
-        String myText = "";
-        String anotherText = " ";
+        String myText = "Here's my firf awesome firf text";
 
-        System.out.println(myText.isEmpty()); // true
-        System.out.println(myText.isBlank()); // true
+        System.out.println(myText);
+        System.out.println(myText.replace("firf", "nice")); // it's case-sensitive
 
-        System.out.println(anotherText.isEmpty()); // false
-        System.out.println(anotherText.isBlank()); // true because it has whitespace
+        System.out.println(myText.replace('e', 'E'));
     }
 }
