@@ -1,10 +1,31 @@
 public class LearnStrings {
+
+    public static String split(String text) {
+        return text.replace(" ", "");
+    }
+
     public static void main(String[] args) {
-        String myText = "Here's my firf awesome firf text";
+        String firstName = "  Edwin  ";
 
-        System.out.println(myText);
-        System.out.println(myText.replace("firf", "nice")); // it's case-sensitive
+        System.out.format("'%s'", firstName);
+        System.out.println();
+        System.out.format("'%s'", firstName.strip());
+        System.out.println();
+        System.out.format("'%s'", firstName.stripLeading());
+        System.out.println();
+        System.out.format("'%s'", firstName.stripTrailing());
+        System.out.println();
+        System.out.format("'%s'", firstName.trim());
 
-        System.out.println(myText.replace('e', 'E'));
+        System.out.println();
+
+        String myLongText = """
+                        first line
+                                    second line
+                third line
+                """;
+
+        System.out.println(myLongText);
+        System.out.format("'%s'",myLongText.stripIndent());
     }
 }
