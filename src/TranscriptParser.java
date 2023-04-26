@@ -12,12 +12,13 @@ public class TranscriptParser {
                 Cumulative GPA (Unweighted)	3.46
                 """;
 
+        // .*? makes * to not be greedy
         String regex = """
                 Student\\sNumber:\\s(?<studentNumber>\\d{10}).* # Grab student number
                 Grade:\\s+(?<grade>\\d{1,2}).* # Grab student grade
                 Birthdate:\\s+(?<month>\\d{2})/(?<day>\\d{2})/(?<year>\\d{4}).* # Grab student birthdate
                 Gender:\\s+(?<gender>\\w+)\\b.* # Grab student gender
-                State\\sID:\\s+(?<stateID>\\d{10})\\b.* # Grab student state id
+                State\\sID:\\s+(?<stateID>\\d{10})\\b.*? # Grab student state id
                 Weighted\\)\\s+(?<gpaWeighted>[\\d\\.]+\\d{2})\\b.* # Grab weighted gpa
                 Unweighted\\)\\s+(?<gpaUnweighted>[\\d\\.]+\\d{2})\\b.* # Grab unweighted gpa
                 """;
