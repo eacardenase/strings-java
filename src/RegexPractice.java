@@ -28,17 +28,18 @@ public class RegexPractice {
 
         // {1,2} is removed in order to capture two groups
         // added () inside other capture group to discard unwanted patterns
-        String regex = "((\\d{1,2})[-.\\s]?)?((\\d{3})[-.\\s]?)((\\d{3})[-.\\s]?)(\\d{3,4})";
+        // ?: to ignore capture groups
+        String regex = "(?:(\\d{1,2})[-.\\s]?)?(?:(\\d{3})[-.\\s]?)(?:(\\d{3})[-.\\s]?)(\\d{3,4})";
         Pattern phoneNumberPattern = Pattern.compile(regex); // an expensive operation
         Matcher phoneNumberMatcher = phoneNumberPattern.matcher(phoneNumber);
 
         if (phoneNumberMatcher.matches()) {
             // parentheses are also capture groups
 //            System.out.println(phoneNumberMatcher.group(0)); // it's the entire string
-            System.out.format("Country code: %s\n", phoneNumberMatcher.group(2));
-            System.out.format("Area code: %s\n", phoneNumberMatcher.group(4));
-            System.out.format("Exchange: %s\n", phoneNumberMatcher.group(6));
-            System.out.format("Line number: %s\n", phoneNumberMatcher.group(7));
+            System.out.format("Country code: %s\n", phoneNumberMatcher.group(1));
+            System.out.format("Area code: %s\n", phoneNumberMatcher.group(2));
+            System.out.format("Exchange: %s\n", phoneNumberMatcher.group(3));
+            System.out.format("Line number: %s\n", phoneNumberMatcher.group(4));
         }
     }
 }
