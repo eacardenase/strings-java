@@ -24,19 +24,21 @@ public class RegexPractice {
 //        System.out.println("333 7653".matches("(\\d{3}[-.\\s]?){1,2}\\d{3,}")); // one to two
 //        System.out.println("1 321 333 7653".matches("(1[-.\\s]?)?(\\d{3}[-.\\s]?){1,2}\\d{3,}"));
 
-        String phoneNumber = "1.321.333.7653";
+        String phoneNumber = "57.315.829.5175";
 
-        String regex = "(1[-.\\s]?)?(\\d{3}[-.\\s]?)(\\d{3}[-.\\s]?)(\\d{3,4})"; // {1,2} is removed in order to capture two groups
+        // {1,2} is removed in order to capture two groups
+        // added () inside other capture group to discard unwanted patterns
+        String regex = "((\\d{1,2})[-.\\s]?)?((\\d{3})[-.\\s]?)((\\d{3})[-.\\s]?)(\\d{3,4})";
         Pattern phoneNumberPattern = Pattern.compile(regex); // an expensive operation
         Matcher phoneNumberMatcher = phoneNumberPattern.matcher(phoneNumber);
 
         if (phoneNumberMatcher.matches()) {
             // parentheses are also capture groups
-//            System.out.println(phoneNumberMatcher.group(0));
-            System.out.println(phoneNumberMatcher.group(1));
-            System.out.println(phoneNumberMatcher.group(2));
-            System.out.println(phoneNumberMatcher.group(3));
-            System.out.println(phoneNumberMatcher.group(4));
+//            System.out.println(phoneNumberMatcher.group(0)); // it's the entire string
+            System.out.format("Country code: %s\n", phoneNumberMatcher.group(2));
+            System.out.format("Area code: %s\n", phoneNumberMatcher.group(4));
+            System.out.format("Exchange: %s\n", phoneNumberMatcher.group(6));
+            System.out.format("Line number: %s\n", phoneNumberMatcher.group(7));
         }
     }
 }
