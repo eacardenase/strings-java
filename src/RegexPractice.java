@@ -24,14 +24,20 @@ public class RegexPractice {
 //        System.out.println("333 7653".matches("(\\d{3}[-.\\s]?){1,2}\\d{3,}")); // one to two
 //        System.out.println("1 321 333 7653".matches("(1[-.\\s]?)?(\\d{3}[-.\\s]?){1,2}\\d{3,}"));
 
-        String phoneNumber = "57.315.829.5175";
+        String phoneNumber = "57 315 829 5175";
 
         // {1,2} is removed in order to capture two groups
         // added () inside other capture group to discard unwanted patterns
         // ?: to ignore capture groups
         // ?<> to name capture groups
-        String regex = "(?:(?<countryCode>\\d{1,2})[-.\\s]?)?(?:(?<areaCode>\\d{3})[-.\\s]?)(?:(?<exchange>\\d{3})[-.\\s]?)(?<lineNumber>\\d{3,4})";
-        Pattern phoneNumberPattern = Pattern.compile(regex); // an expensive operation
+        String regex = """
+                        # Regex to parse phone numbers parts
+                        (?:(?<countryCode>\\d{1,2})[-.\\s]?)? # Get's country code
+                        (?:(?<areaCode>\\d{3})[-.\\s]?) # Get's area code
+                        (?:(?<exchange>\\d{3})[-.\\s]?) # Get's exchange
+                        (?<lineNumber>\\d{3,4}) # Get's line number
+                        """;
+        Pattern phoneNumberPattern = Pattern.compile(regex, Pattern.COMMENTS); // an expensive operation
         Matcher phoneNumberMatcher = phoneNumberPattern.matcher(phoneNumber);
 
         if (phoneNumberMatcher.matches()) {
